@@ -8,7 +8,7 @@ import java.text.ParseException;
  */
 public class LocalApp {
     public static void main(String[] args) throws IOException, ParseException {
-        App client = new App(args[0]);
+        App client = new App("/home/angela/Downloads/flights/1.csv");
         client.connect("104.196.110.202");
         client.close();
     }
