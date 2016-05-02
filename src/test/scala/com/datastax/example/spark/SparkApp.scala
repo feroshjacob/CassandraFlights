@@ -27,10 +27,11 @@ object SparkApp  {
   }
   def main(args: Array[String]): Unit = {
     val sc = creatSparkContext(args)
-    val rdd = sc.cassandraTable("sparktest", "kv")
-    println(rdd.count)
-    println(rdd.first)
-    println(rdd.map(_.getInt("value")).sum)
+    val rdd =
+      sc.cassandraTable("sparktest", "kv")
+      .filter(f=>    f.get[Int]("value")==10  )
+        .map(f=>   (f.get[String]("key").toString , f.get[Int]("value") *100)  )
+        .saveToCassandra("sparktest", "kv", SomeColumns("key", "value"))
   }
 
 }
