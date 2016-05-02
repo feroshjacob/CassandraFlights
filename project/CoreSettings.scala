@@ -43,11 +43,12 @@ object CoreSettings {
     test in assembly := {},
     libraryDependencies ++= Seq(
     "com.datastax.spark" %% "spark-cassandra-connector" % "1.5.0",
-    "com.datastax.cassandra" %% "cassandra-driver-core" % "3.0.0",
-    "net.sf.opencsv" %% "opencsv" % "2.3",
+    "com.datastax.cassandra" % "cassandra-driver-core" % "3.0.0",
+    "net.sf.opencsv" % "opencsv" % "2.3",
     "com.recipegrace.electric" %% "electric" % electricVersion,
       "org.apache.commons" % "commons-lang3" % "3.4",
-    "org.apache.spark" %% "spark-core" % sparkVersion % "provided")
+    "org.apache.spark" %% "spark-core" % sparkVersion % "test",
+    "org.apache.spark" %% "spark-sql" % sparkVersion % "test")
   )
 
 }
